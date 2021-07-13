@@ -52,7 +52,7 @@
     <xd:doc>
         <xd:desc>root template</xd:desc>      
     </xd:doc>
-    <xsl:template match="/">  
+    <xsl:template match="/" xpath-default-namespace="http://www.loc.gov/MARC21/slim">  
         <zs:searchRetrieveResponse xmlns:zs="http://www.loc.gov/zing/srw/">
             <modsCollection>
                 <xsl:for-each select="*//record" xpath-default-namespace="http://www.loc.gov/MARC21/slim">                   
@@ -67,14 +67,14 @@
                         media-type="text/xml" format="originalFile" 
                         href="{$workingDir}N-{$originalFilename}_{position()}.xml">
                         <marc:record>
-                            <xsl:namespace name="marc">http://www.loc.gov/MARC21/slim</xsl:namespace> 
-                            <xsl:namespace name="oclcterms">http://purl.org/oclc/terms/</xsl:namespace>
-                            <xsl:namespace name="dc">http://purl.org/dc/elements/1.1/</xsl:namespace>
-                            <xsl:namespace name="diag">http://www.loc.gov/zing/srw/diagnostic/</xsl:namespace>
-                            <xsl:namespace name="zs">http://www.loc.gov/zing/srw/</xsl:namespace>
-                            <xsl:namespace name="xlink">http://www.w3.org/1999/xlink</xsl:namespace>
-                            <xsl:namespace name="xsi">http://www.w3.org/2001/XMLSchema-instance</xsl:namespace>
-                            <xsl:attribute name="xsi:schemaLocation">http://www.loc.gov/MARC21/slim https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd</xsl:attribute>
+                            <xsl:namespace name="marc" select="'http://www.loc.gov/MARC21/slim'"/> 
+                            <xsl:namespace name="oclcterms" select="'http://purl.org/oclc/terms/'"/>
+                            <xsl:namespace name="dc" select="'http://purl.org/dc/elements/1.1/'"/>
+                            <xsl:namespace name="diag" select="'http://www.loc.gov/zing/srw/diagnostic/'"/>
+                            <xsl:namespace name="zs" select="'http://www.loc.gov/zing/srw/'"/>
+                            <xsl:namespace name="xlink" select="'http://www.w3.org/1999/xlink'"/>
+                            <xsl:namespace name="xsi" select="'http://www.w3.org/2001/XMLSchema-instance'"/>
+                            <xsl:attribute name="xsi:schemaLocation" select="'http://www.loc.gov/MARC21/slim https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'"/>
                             <xsl:apply-templates select="marc:leader"/>
                             <xsl:apply-templates select="marc:controlfield"/>
                             <xsl:apply-templates select="marc:datafield"/>
