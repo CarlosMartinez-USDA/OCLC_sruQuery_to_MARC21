@@ -1,0 +1,2 @@
+# OCLC_sruQuery_to_MARC21
+To remove the "zing" (or zs) prefixed elements and create individual MARC records. The archiveFile records produced from this transformation are direct copies of all the elements within the MARC namespace; beginning with record. The originalFile records produced add the marc prefix to each element making it easier to transform into other formats including MARC21 and MODS.
